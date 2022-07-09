@@ -84,7 +84,7 @@
 				},
 				
 		     },
-		async onLoad() {
+			onLoad() {
 			uni.request({
 			    url: 'https://api.apiopen.top/api/sentences', //仅为示例，并非真实接口地址。
 			    success: (res) => {
@@ -92,8 +92,12 @@
 					
 			    }
 			});
+			
 		
-		},
+			},
+			onShow() {
+				
+			}
 		
 	}
 </script>
