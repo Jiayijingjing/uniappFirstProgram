@@ -26,16 +26,20 @@
 		</view>
 			<swiper :current="curind" style="height: 1200rpx;">
 				<swiper-item >
-					<view class="news" ></view>		
+					<view class="news" >
+						<view class="ceshiajax" @tap="qingqiu">点击发请求{{indexvalue}}</view>
+					</view>		
 				</swiper-item>
 				<swiper-item >
 					<view class="food"></view>
 				</swiper-item>
 			</swiper>
-	</view>
+		</view>
+		
 </template>
 
 <script>
+	import { getNews} from '../../config/api.js';
 	export default {
 		  data() {
 		         return {
@@ -47,6 +51,7 @@
 					 shuju:'',
 					 curind:0,
 					 pink:0*1,
+					 indexvalue:0,
 		         }
 		     },
 		     methods: {
@@ -69,19 +74,25 @@
 					})
 					
 				},
-			
 				oneye(index){
 					this.curind=index;
 					this.pink=index;
-				}
+				},
+				async qingqiu(){
+					let aa = await getNews({ custom: { auth: true }});
+					this.indexvalue = aa.statusCode;
+				},
+				
 		     },
-		onLoad() {
+		async onLoad() {
 			uni.request({
 			    url: 'https://api.apiopen.top/api/sentences', //仅为示例，并非真实接口地址。
 			    success: (res) => {
 			        this.shuju= res.statusCode;
+					
 			    }
 			});
+		
 		},
 		
 	}
