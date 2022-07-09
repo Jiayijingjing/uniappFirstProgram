@@ -1,4 +1,10 @@
 {
+	"easycom": {
+			"autoscan": true,
+			"custom": { // 这里修改后一定要重启 HBuilderX（踩坑）
+				"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue" 
+			}
+		},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",

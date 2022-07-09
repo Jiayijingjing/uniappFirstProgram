@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="uni-margin-wrap">
+		<view >
 					<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 						:duration="duration">
 						<swiper-item>
@@ -17,9 +17,21 @@
 					</swiper>
 		</view>
 		<view class="tab">
-				<view class="tab_1" @tap="gotoTab('/pages/feeds/feeds')">精彩动态</view>
-				<view class="tab_2" @tap="gotoTab('/pages/me/me')">个人中心</view>
+				<view class="tab_1" @tap="gotoTab('/pages/feeds/feeds')" >精彩动态</view>
+				<view class="tab_2" @tap="gotoTab('/pages/me/me')" >个人中心{{shuju}}</view>
 		</view>
+		<view class="cho">
+			<view class="cho1" @tap="oneye(0)" :class="pink == 0?'backred':''" >推荐</view>
+			<view class="cho2" @tap="oneye(1)" :class="pink == 1?'backred':''">咨询</view>
+		</view>
+			<swiper :current="curind" style="height: 1200rpx;">
+				<swiper-item >
+					<view class="news" ></view>		
+				</swiper-item>
+				<swiper-item >
+					<view class="food"></view>
+				</swiper-item>
+			</swiper>
 	</view>
 </template>
 
@@ -31,7 +43,10 @@
 		             indicatorDots: true,
 		             autoplay: true,
 		             interval: 2000,
-		             duration: 500
+		             duration: 500,
+					 shuju:'',
+					 curind:0,
+					 pink:0*1,
 		         }
 		     },
 		     methods: {
@@ -48,30 +63,34 @@
 		             this.duration = e.target.value
 		         },
 				gotoTab(url){
+					
 					uni.switchTab({
 						url
 					})
+					
 				},
-				gotoTab(url){
-					uni.switchTab({
-						url
-					})
+			
+				oneye(index){
+					this.curind=index;
+					this.pink=index;
 				}
 		     },
 		onLoad() {
-
+			uni.request({
+			    url: 'https://api.apiopen.top/api/sentences', //仅为示例，并非真实接口地址。
+			    success: (res) => {
+			        this.shuju= res.statusCode;
+			    }
+			});
 		},
 		
 	}
 </script>
 
 <style>
-	.uni-margin-wrap {
-			width: 690rpx;
-			width: 100%;
-		}
 		.swiper {
 			height: 300rpx;
+			width: 100%;
 		}
 		.swiper-item {
 			display: block;
@@ -95,6 +114,7 @@
 			width: 550rpx;
 			padding: 0 100rpx;
 		}
+		
 		.aa{
 			background-image: url("@/static/datu.jpg");
 			background-size: 100% 100%;
@@ -123,5 +143,37 @@
 			flex: 1;
 			background-color: aquamarine;
 			border:1px solid #ccc;
+		}
+		
+		.news{
+			background-color:pink;
+		    height: 2000rpx;
+			
+		}
+		.food{
+			background-color: yellowgreen;
+			height: 2000rpx;
+			
+		}
+		.cho{
+			display: flex;
+			flex-direction: row;
+		}
+		.cho1{
+			flex: 1;
+			text-align: center;
+			height: 80upx;
+			line-height: 80upx;
+			border: 1px solid red;
+		}
+		.cho2{
+			flex: 1;
+			text-align: center;
+			height: 80upx;
+			line-height: 80upx;
+			border: 1px solid red;
+		}
+		.backred{
+			background-color: red;
 		}
 </style>

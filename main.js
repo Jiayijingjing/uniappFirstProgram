@@ -7,8 +7,17 @@ App.mpType = 'app'
 const app = new Vue({
     ...App
 })
+
+
+
+
+require('config/request.js')(app)
+
 app.$mount()
 // #endif
+
+import uView from 'uview-ui'
+Vue.use(uView)
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
