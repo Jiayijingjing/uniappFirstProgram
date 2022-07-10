@@ -74,5 +74,27 @@
 				
 			}
 		]
-	}
+	},
+	"subPackages": [
+		{
+			"root": "subpages",
+			"pages": [{
+					"path": "feedsinfo",
+					"style": {
+						"navigationBarTextStyle": "动态详情",
+						"navigationBarBackgroundColor": "#ffffff",
+						"navigationBarTextStyle":"black",
+						"backgroundColor": "#ffffff"
+					}
+			},{
+				"path": "newsinfo",
+				"style": { 
+					"navigationStyle": "custom"
+					
+				}
+			}
+			]
+		}
+	]
+	
 }

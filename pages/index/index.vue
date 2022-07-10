@@ -18,20 +18,88 @@
 		</view>
 		<view class="tab">
 				<view class="tab_1" @tap="gotoTab('/pages/feeds/feeds')" >精彩动态</view>
-				<view class="tab_2" @tap="gotoTab('/pages/me/me')" >个人中心{{shuju}}</view>
+				<view class="tab_2" @tap="gotoTab('/pages/me/me')" >个人中心</view>
 		</view>
 		<view class="cho">
 			<view class="cho1" @tap="oneye(0)" :class="pink == 0?'backred':''" >推荐</view>
-			<view class="cho2" @tap="oneye(1)" :class="pink == 1?'backred':''">咨询</view>
+			<view class="cho2" @tap="oneye(1)" :class="pink == 1?'backred':''">资讯</view>
 		</view>
-			<swiper :current="curind" style="height: 1200rpx;">
+			<swiper  :current="curind" style="height: 2000rpx;" @animationfinish="qiehuan">
 				<swiper-item >
 					<view class="news" >
-						<view class="ceshiajax" @tap="qingqiu">点击发请求{{indexvalue}}</view>
+						<view class="ceshiajax">
+								<view class="liu" > 
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+								<view class="liu" >
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+								<view class="liu" >
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+								<view class="liu" >
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+								<view class="liu" >
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+								<view class="liu" >
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+								<view class="liu" >
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+								<view class="liu" >
+									<image src="../../static/datu.jpg" class="liu_tu" @tap="navito"/>
+									<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+								</view>
+						</view>
 					</view>		
 				</swiper-item>
 				<swiper-item >
-					<view class="food"></view>
+					<view class="food">
+						<view class="ceshi_b" >
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+							<view class="liu_b" >
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
+							</view>
+						</view>
+					</view>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -40,6 +108,8 @@
 
 <script>
 	import { getNews} from '../../config/api.js';
+	
+	
 	export default {
 		  data() {
 		         return {
@@ -54,6 +124,12 @@
 					 indexvalue:0,
 		         }
 		     },
+			 onPullDownRefresh() {
+			 	
+			 },
+			 onReachBottom() {
+			 	
+			 }, 
 		     methods: {
 		         changeIndicatorDots(e) {
 		             this.indicatorDots = !this.indicatorDots
@@ -78,26 +154,30 @@
 					this.curind=index;
 					this.pink=index;
 				},
-				async qingqiu(){
-					let aa = await getNews({ custom: { auth: true }});
-					this.indexvalue = aa.statusCode;
+				qiehuan(event){
+					let index =event.detail.current;
+					this.pink=index;
+					
 				},
-				
+				navito(){
+					uni.$u.route('/subpages/newsinfo');
+				}
 		     },
 			onLoad() {
-			uni.request({
-			    url: 'https://api.apiopen.top/api/sentences', //仅为示例，并非真实接口地址。
-			    success: (res) => {
-			        this.shuju= res.statusCode;
+			// uni.request({
+			//     url: 'https://api.apiopen.top/api/sentences', //仅为示例，并非真实接口地址。
+			//     success: (res) => {
+			//         this.shuju= res.statusCode;
 					
-			    }
-			});
+			//     }
+			// });
 			
 		
 			},
 			onShow() {
 				
-			}
+			},
+		
 		
 	}
 </script>
@@ -126,7 +206,7 @@
 			right: 20rpx;
 		}
 		.uni-padding-wrap {
-			width: 550rpx;
+			
 			padding: 0 100rpx;
 		}
 		
@@ -161,7 +241,7 @@
 		}
 		
 		.news{
-			background-color:pink;
+			background-color:white;
 		    height: 2000rpx;
 			
 		}
@@ -190,5 +270,41 @@
 		}
 		.backred{
 			background-color: red;
+		}
+		.ceshiajax{
+			column-count: 2;
+			column-gap: 2px;
+			
+		}
+		.liu_tu{
+			width: 100%;
+			border-radius: 8px;
+			vertical-align: bottom;
+			height: 120px;
+		}
+		.liu{
+			margin-bottom: 10px;
+			height: 160px;
+			padding: 2px;
+			display: flex;
+			flex-direction: column;
+
+		}
+		.ceshi_b{
+			width: 100%;
+			height: 40px;
+			
+		}
+		.liu_b{
+			padding-left: 4px;
+			padding-right: 4px;
+		
+		}
+		.liu_tu_b{
+			width: 100%;
+			border-radius: 8px;
+			vertical-align: bottom;
+			height: 120px;
+			margin-top: 4px;
 		}
 </style>

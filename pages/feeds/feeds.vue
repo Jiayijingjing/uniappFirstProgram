@@ -1,6 +1,6 @@
 <template>
-	<view>
-		动态中心
+	<view >
+		<navigator url="/subpages/feedsinfo">动态中心</navigator>
 	</view>
 </template>
 
