@@ -67,35 +67,35 @@
 					<view class="food">
 						<view class="ceshi_b" >
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 							<view class="liu_b" >
-								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navito"/>
+								<image src="../../static/zhutu02.jpg" class="liu_tu_b" @tap="navitonews"/>
 								<text>浏览器会根据容器的空间大小来自动分配列的宽度</text>
 							</view>
 						</view>
@@ -160,6 +160,9 @@
 					
 				},
 				navito(){
+					uni.$u.route('/subpages/feedsinfo');
+				},
+				navitonews(){
 					uni.$u.route('/subpages/newsinfo');
 				}
 		     },
@@ -182,7 +185,7 @@
 	}
 </script>
 
-<style>
+<style scoped lang="scss">
 		.swiper {
 			height: 300rpx;
 			width: 100%;
